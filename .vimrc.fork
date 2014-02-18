@@ -1,0 +1,63 @@
+" Vim UI {
+  set nospell                 " Turning off spellcheck because everything is mispelled...
+  set autowrite               " automatically write a file when leaving a modified buffer
+  autocmd FocusLost * :wa     " automatically save on focus lost
+  set autoread                " automatically reload the file when changed outside vim
+
+  set colorcolumn=101              " show right margin at 101 characters
+
+  if has("gui_running")
+    set lines=40 columns=84       " Make GVIM bigger on startup
+  endif
+" }
+
+" Formatting {
+  set shiftwidth=2                " use indents of 2 spaces
+  set tabstop=2                   " pressing tab makes 2 spaces
+  set smarttab
+
+  " Remove trailing whitespaces and ^M chars
+  " autocmd FileType c,cpp,java,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+  function! TrimWhiteSpace()
+    silent! %s/\s*$//
+    ''
+  :endfunction
+  " Trim whitespace
+  autocmd FileType c,cpp,java,javascript,python autocmd BufWritePre * :call TrimWhiteSpace()
+" }
+
+" Key Mappings {
+  " Replace word under cursor
+  nmap <leader>s :%s/\<<C-r><C-w>\>//<Left>
+
+  " Map ; to :
+  noremap ; :
+
+  " Switching panes
+  map <C-j> <C-W>j
+  map <C-h> <C-W>h
+  map <C-k> <C-W>k
+  map <C-l> <C-W>l
+" }
+
+" Plugins {
+  " NerdTree {
+    map <C-e> :NERDTreeToggle<CR>
+    map <leader>e :NERDTreeFind<CR>
+  " }
+" }
+
+" Javascript fold override {
+  function! JavaScriptFold()
+      setl foldmethod=syntax
+      setl foldlevelstart=1
+      syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
+
+      function! FoldText()
+          return substitute(getline(v:foldstart), '{.*', '{...}', '')
+      endfunction
+      setl foldtext=FoldText()
+  endfunction
+  au FileType javascript call JavaScriptFold()
+  au FileType javascript setl fen
+" }
