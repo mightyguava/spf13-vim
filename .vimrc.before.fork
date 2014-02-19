@@ -1,0 +1,2 @@
+"let g:override_spf13_bundles = 1
+let g:spf13_bundle_groups=['general', 'neocomplcache', 'python', 'go', 'javascript', 'html', 'misc']

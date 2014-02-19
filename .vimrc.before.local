@@ -1,2 +1,0 @@
-" Do not automatically switch to the current file directory when a new buffer is opened.
-let g:spf13_no_autochdir = 1
