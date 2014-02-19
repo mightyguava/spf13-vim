@@ -1,4 +1,5 @@
 " Vim UI {
+  color wombat
   set nospell                 " Turning off spellcheck because everything is mispelled...
   set autowrite               " automatically write a file when leaving a modified buffer
   autocmd FocusLost * :wa     " automatically save on focus lost
