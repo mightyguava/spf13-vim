@@ -23,8 +23,12 @@
     silent! %s/\s*$//
     ''
   :endfunction
-  " Trim whitespace
-  autocmd FileType c,cpp,java,javascript,python autocmd BufWritePre * :call TrimWhiteSpace()
+  " Trim whitespace {
+    " Only certain files
+    " autocmd FileType c,cpp,java,javascript,python autocmd BufWritePre * :call TrimWhiteSpace()
+    " All files
+    autocmd BufWritePre * :call TrimWhiteSpace()
+  " }
 " }
 
 " Key Mappings {
@@ -45,6 +49,10 @@
   " NerdTree {
     map <C-e> :NERDTreeToggle<CR>
     map <leader>e :NERDTreeFind<CR>
+  " }
+
+  " elzr/vim-json {
+    let g:vim_json_syntax_conceal = 0
   " }
 " }
 
