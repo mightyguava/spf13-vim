@@ -7,8 +7,5 @@ UnBundle 'tpope/vim-abolish.git'
 UnBundle 'osyo-manga/vim-over'
 UnBundle 'justinmk/vim-sneak'
 
-" This one doesn't work well with fugitive for some reason. Makes things slow
-UnBundle 'bling/vim-airline'
-
 " Pick and choose some additional bundles
 Bundle 'tpope/vim-fugitive'
