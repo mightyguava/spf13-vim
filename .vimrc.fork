@@ -7,6 +7,8 @@
 
   set colorcolumn=101              " show right margin at 101 characters
 
+  autocmd FileType gitcommit set textwidth=72 " wrap git commit message at 72 characters
+
   if has("gui_running")
     set lines=40 columns=84       " Make GVIM bigger on startup
   endif
