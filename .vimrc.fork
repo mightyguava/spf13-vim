@@ -18,19 +18,6 @@
   set shiftwidth=2                " use indents of 2 spaces
   set tabstop=2                   " pressing tab makes 2 spaces
   set smarttab
-
-  " Remove trailing whitespaces and ^M chars
-  " autocmd FileType c,cpp,java,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
-  function! TrimWhiteSpace()
-    silent! %s/\s*$//
-    ''
-  :endfunction
-  " Trim whitespace {
-    " Only certain files
-    " autocmd FileType c,cpp,java,javascript,python autocmd BufWritePre * :call TrimWhiteSpace()
-    " All files
-    autocmd BufWritePre * :call TrimWhiteSpace()
-  " }
 " }
 
 " Key Mappings {
